@@ -7,7 +7,7 @@ flags = {
     'trigger'    : '(passHltEle23Ele12CaloIdLTrackIdLIsoVLLeg1L1match == 1 && passHltEle23Ele12CaloIdLTrackIdLIsoVLLeg2 == 1)',
     }
 
-baseOutDir = 'results/UL2016pre/'
+baseOutDir = 'results/UL2016pre/pass0'
 
 #############################################################
 ########## samples definition  - preparing the samples
@@ -18,19 +18,17 @@ import etc.inputs.tnpSampleDef as tnpSamples
 tnpTreeDir = 'tnpEleTrig'
 
 samplesDef = {
-    'data'   : tnpSamples.LegacyReReco2016['data_Run2016B'].clone(),
-    'mcNom'  : tnpSamples.LegacyReReco2016['DY_madgraph'].clone(),
-    'mcAlt'  : tnpSamples.LegacyReReco2016['DY_amcatnlo'].clone(),
-    'tagSel' : tnpSamples.LegacyReReco2016['DY_madgraph'].clone(),
+    'data'   : tnpSamples.UL2016_preVFP['data_Run2016B'].clone(),
+    'mcNom'  : tnpSamples.UL2016_preVFP['DY_madgraph'].clone(),
+    'mcAlt'  : tnpSamples.UL2016_preVFP['DY_amcatnloext'].clone(),
+    'tagSel' : tnpSamples.UL2016_preVFP['DY_madgraph'].clone(),
 }
 
 ## can add data sample easily
-samplesDef['data'].add_sample( tnpSamples.LegacyReReco2016['data_Run2016C'] )
-samplesDef['data'].add_sample( tnpSamples.LegacyReReco2016['data_Run2016D'] )
-samplesDef['data'].add_sample( tnpSamples.LegacyReReco2016['data_Run2016E'] )
-samplesDef['data'].add_sample( tnpSamples.LegacyReReco2016['data_Run2016F'] )
-samplesDef['data'].add_sample( tnpSamples.LegacyReReco2016['data_Run2016G'] )
-samplesDef['data'].add_sample( tnpSamples.LegacyReReco2016['data_Run2016H'] )
+samplesDef['data'].add_sample( tnpSamples.UL2016_preVFP['data_Run2016C'] )
+samplesDef['data'].add_sample( tnpSamples.UL2016_preVFP['data_Run2016D'] )
+samplesDef['data'].add_sample( tnpSamples.UL2016_preVFP['data_Run2016E'] )
+samplesDef['data'].add_sample( tnpSamples.UL2016_preVFP['data_Run2016F'] )
 
 ## some sample-based cuts... general cuts defined here after
 ## require mcTruth on MC DY samples and additional cuts

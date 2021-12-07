@@ -8,7 +8,7 @@ flags = {
     }
 
 #baseOutDir = 'results/UL2017/tnpEdTrigger/'
-baseOutDir = 'results/UL2018/tnpEdTriggerV2/'
+baseOutDir = 'results/UL2018/pass0/'
 
 #############################################################
 ########## samples definition  - preparing the samples
