@@ -73,7 +73,17 @@ class efficiency:
         for isyst in range(6):
             self.systCombined += self.syst[isyst]*self.syst[isyst];
 
+        self.systEffData = 0
+        for isyst in [0,self.iAltBkgModel+2,self.iAltSigModel+2]:
+            self.systEffData += self.syst[isyst]*self.syst[isyst];
+
+        self.systEffMC = 0
+        for isyst in [1,self.iAltMCSignal+2,self.iAltTagSelec+2]:
+            self.systEffMC += self.syst[isyst]*self.syst[isyst];
+
         self.systCombined = math.sqrt(self.systCombined)
+        self.systEffData = math.sqrt(self.systEffData)
+        self.systEffMC = math.sqrt(self.systEffMC)
         
 
     def __add__(self,eff):

@@ -4,11 +4,12 @@
 
 # flag to be Tested
 flags = {
-    'trigger'    : '(passHltEle23Ele12CaloIdLTrackIdLIsoVLLeg1L1match == 1 && passHltEle23Ele12CaloIdLTrackIdLIsoVLLeg2 == 1)',
+    'trigger_leg1'    : 'passHltEle23Ele12CaloIdLTrackIdLIsoVLLeg1L1match == 1',
+    'trigger_leg2'    : 'passHltEle23Ele12CaloIdLTrackIdLIsoVLLeg2 == 1',
     }
 
 #baseOutDir = 'results/UL2017/tnpEdTrigger/'
-baseOutDir = 'results/UL2018/pass0/'
+baseOutDir = 'results/UL2018/pass1/'
 
 #############################################################
 ########## samples definition  - preparing the samples

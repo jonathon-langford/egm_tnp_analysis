@@ -285,6 +285,37 @@ def diagnosticErrorPlot( effgr, ierror, nameout ):
     
     return h2_sfErrorAbs
 
+def extractEGM_SFs(filein):
+    nameOutBase = filein 
+    if not os.path.exists( filein ) :
+        print 'file %s does not exist' % filein
+        sys.exit(1)
+
+
+    fileWithEff = open(filein, 'r')
+    effGraph = efficiencyList()
+    
+    for line in fileWithEff :
+        modifiedLine = line.lstrip(' ').rstrip(' ').rstrip('\n')
+        numbers = modifiedLine.split('\t')
+
+        if len(numbers) > 0 and isFloat(numbers[0]):
+            etaKey = ( float(numbers[0]), float(numbers[1]) )
+            ptKey  = ( float(numbers[2]), min(500,float(numbers[3])) )
+        
+            myeff = efficiency(ptKey,etaKey,
+                               float(numbers[4]),float(numbers[5]),float(numbers[6] ),float(numbers[7] ),
+                               float(numbers[8]),float(numbers[9]),float(numbers[10]),float(numbers[11]) )
+#                           float(numbers[8]),float(numbers[9]),float(numbers[10]), -1 )
+
+            effGraph.addEfficiency(myeff)
+
+    fileWithEff.close()
+
+    effGraph.symmetrizeSystVsEta()
+    effGraph.combineSyst()
+    return effGraph
+
 def doEGM_SFs(filein, lumi, axis = ['pT','eta'] ):
     print " Opening file: %s (plot lumi: %3.1f)" % ( filein, lumi )
     CMS_lumi.lumi_13TeV = "%+3.1f fb^{-1}" % lumi 
